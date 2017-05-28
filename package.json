@@ -42,7 +42,6 @@
     }
   },
   "scripts": {
-    "test": "mocha test/",
     "build": "webpack -p",
     "watch": "webpack --watch",
     "prepublish": "npm run --if-present build"
