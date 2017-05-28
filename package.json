@@ -1,0 +1,72 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "author": "azu",
+  "license": "MIT",
+  "files": [
+    "bin/",
+    "lib/",
+    "src/",
+    "assets/"
+  ],
+  "name": "gitbook-plugin-github-issue-feedback",
+  "version": "1.0.0",
+  "description": "GitHub issue feedback for gitbook.",
+  "main": "index.js",
+  "engines": {
+    "gitbook": "*"
+  },
+  "gitbook": {
+    "properties": {
+      "newIssueURL": {
+        "type": "string",
+        "description": "GitHub New Issue url e.g.) https://github.com/azu/promises-book/issues/new",
+        "required": true
+      },
+      "markdownBaseURL": {
+        "type": "string",
+        "description": "Base url for resouce e.g.) https://github.com/asciidwango/js-primer/blob/master/",
+        "required": true
+      }
+    }
+  },
+  "scripts": {
+    "test": "mocha test/",
+    "build": "browserify src/plugin.js -o assets/plugin.js",
+    "prepublish": "npm run --if-present build"
+  },
+  "keywords": [
+    "gitbook",
+    "github",
+    "issue",
+    "feeback"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/gitbook-plugin-github-issue-feedback.git"
+  },
+  "bugs": {
+    "url": "https://github.com/azu/gitbook-plugin-github-issue-feedback/issues"
+  },
+  "homepage": "https://github.com/azu/gitbook-plugin-github-issue-feedback",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-jsdoc-to-assert": "^4.0.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.24.1",
+    "cross-env": "^5.0.0",
+    "mocha": "^3.4.2",
+    "power-assert": "^1.4.2",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "position-map-text-to-markdown": "^1.0.1"
+  }
+}
