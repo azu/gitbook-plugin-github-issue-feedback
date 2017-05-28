@@ -1,4 +1,4 @@
-var path = require("path");
+var urlJoin = require("url-join");
 var BugReporter = require("./BugReporter");
 var findAllPositions = require("position-map-text-to-markdown").findAllPositions;
 
@@ -20,26 +20,26 @@ function getContentAsync(apiURL) {
 
 function getResourceURL(config, filePath, branch) {
     if (config["markdownBaseURL"]) {
-        return path.join(config["markdownBaseURL"], filePath);
+        return urlJoin(config["markdownBaseURL"], filePath);
     }
-    return `https://github.com/${config.repo}/blob/${branch}/${filePath}`
+    return urlJoin(`https://github.com/`, config.repo, `blob`, branch, filePath);
 }
 
 function getEditURL(config, filePath, branch) {
-    return `https://github.com/${config.repo}/edit/${branch}/${filePath}`
+    return urlJoin(`https://github.com/`, config.repo, `edit`, branch, filePath);
 }
 function getAPIURL(config, filePath) {
     if (config["githubAPIBaseURL"]) {
-        return path.join(config["githubAPIBaseURL"], filePath);
+        return urlJoin(config["githubAPIBaseURL"], filePath);
     }
-    return `https://api.github.com/repos/${config.repo}/contents/${filePath}`;
+    return urlJoin(`https://api.github.com/repos/`, config.repo, `contents`, filePath);
 }
 
 function getIssueURL(config) {
     if (config["newIssueURL"]) {
         return config["newIssueURL"];
     }
-    return `https://github.com/${config.repo}/issues/new`
+    return urlJoin(`https://github.com/`, config.repo, `/issues/new`);
 }
 window.require(["gitbook"], function(gitbook) {
     // plugin config
@@ -51,8 +51,9 @@ window.require(["gitbook"], function(gitbook) {
         reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
         reportElement.addEventListener(clickEvent, function(event) {
-            var apiURL = getAPIURL(config, gitbook.state.filepath);
-            var resourceURL = getResourceURL(config, gitbook.state.filepath, "master");
+            var pathname = urlJoin(gitbook.state.config.root, gitbook.state.filepath);
+            var apiURL = getAPIURL(config, pathname);
+            var resourceURL = getResourceURL(config, pathname, "master");
             var editURL = getEditURL(config, gitbook.state.filepath, "master");
             getContentAsync(apiURL).then(function(markdown) {
                 var bug = new BugReporter(getIssueURL(config));
