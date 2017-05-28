@@ -76,7 +76,6 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "browserify": "^14.4.0",
     "position-map-text-to-markdown": "^1.0.1",
     "url-join": "^2.0.2"
   }
