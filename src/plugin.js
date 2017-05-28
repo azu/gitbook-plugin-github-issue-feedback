@@ -1,3 +1,4 @@
+var path = require("path");
 var urlJoin = require("url-join");
 var BugReporter = require("./BugReporter");
 var findAllPositions = require("position-map-text-to-markdown").findAllPositions;
@@ -51,7 +52,7 @@ window.require(["gitbook"], function(gitbook) {
         reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
         reportElement.addEventListener(clickEvent, function(event) {
-            var pathname = urlJoin(gitbook.state.config.root, gitbook.state.filepath);
+            var pathname = path.join(gitbook.state.config.root, gitbook.state.filepath);
             var apiURL = getAPIURL(config, pathname);
             var resourceURL = getResourceURL(config, pathname, "master");
             var editURL = getEditURL(config, gitbook.state.filepath, "master");
