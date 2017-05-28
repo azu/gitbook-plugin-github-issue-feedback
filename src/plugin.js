@@ -57,10 +57,10 @@ window.require(["gitbook"], function(gitbook) {
             var resourceURL = getResourceURL(config, pathname, "master");
             var editURL = getEditURL(config, pathname, "master");
             var chapterTitle = gitbook.state.chapterTitle;
+            var bug = new BugReporter(getIssueURL(config));
+            var selectedText = bug.getSelectedText().trim();
+            bug.setTitle(chapterTitle);
             getContentAsync(apiURL).then(function(markdown) {
-                var bug = new BugReporter(getIssueURL(config));
-                bug.setTitle(chapterTitle);
-                var selectedText = bug.getSelectedText().trim();
                 let body = 'URL : ' + resourceURL + "\n\n";
                 if (selectedText && selectedText.length > 0) {
                     var matches = findAllPositions({
