@@ -71,7 +71,7 @@ window.require(["gitbook"], function(gitbook) {
                     matches.forEach(function(match) {
                         var editLink = `[:memo:](${editURL}#L${match.loc.start.line} "Edit")`;
                         body += quoteText(match.markdown + "\n" +
-                                `${editLink} <${resourceURL}#L${match.loc.start.line}>`) + "\n";
+                                `${editLink} <${resourceURL}#L${match.loc.start.line}>`) + "\n\n";
                     });
                 }
                 bug.setBody(body);
