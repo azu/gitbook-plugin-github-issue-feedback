@@ -7,9 +7,7 @@ module.exports = {
     ],
     "pluginsConfig": {
         "github-issue-feedback": {
-            "newIssueURL": "https://github.com/asciidwango/js-primer/issues/new",
-            "markdownBaseURL": "https://github.com/asciidwango/js-primer/contents",
-            "githubAPIBaseURL": "https://api.github.com/repos/asciidwango/js-primer/blob/master/"
+            "repo": "azu/gitbook-plugin-github-issue-feedback"
         }
     }
 };

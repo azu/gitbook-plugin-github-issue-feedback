@@ -19,21 +19,32 @@
   },
   "gitbook": {
     "properties": {
+      "repo": {
+        "type": "string",
+        "description": "GitHub repo path. e.g.) asciidwango/js-primer ",
+        "required": true
+      },
       "newIssueURL": {
         "type": "string",
         "description": "GitHub New Issue url e.g.) https://github.com/azu/promises-book/issues/new",
-        "required": true
+        "required": false
       },
       "markdownBaseURL": {
         "type": "string",
         "description": "Base url for resouce e.g.) https://github.com/asciidwango/js-primer/blob/master/",
-        "required": true
+        "required": false
+      },
+      "githubAPIBaseURL": {
+        "type": "string",
+        "description": "GitHub API Base url e.g.) https://api.github.com/repos/asciidwango/js-primer/blob/master/",
+        "required": false
       }
     }
   },
   "scripts": {
     "test": "mocha test/",
-    "build": "browserify src/plugin.js -o assets/plugin.js",
+    "build": "webpack -p",
+    "watch": "webpack --watch",
     "prepublish": "npm run --if-present build"
   },
   "keywords": [

@@ -10,7 +10,26 @@ Install with [npm](https://www.npmjs.com/):
 
 ## Usage
 
-- [ ] Write usage instructions
+You should set `repo` in your `book.json`.
+
+`book.json`
+
+- `repo`: `owner/name`
+
+```json
+{
+    "gitbook": ">=3.0.0",
+    "title": "Example",
+    "plugins": [
+        "github-issue-feedback"
+    ],
+    "pluginsConfig": {
+        "github-issue-feedback": {
+            "repo": "azu/gitbook-plugin-github-issue-feedback"
+        }
+    }
+}
+```
 
 ## Changelog
 
