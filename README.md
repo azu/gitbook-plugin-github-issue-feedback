@@ -2,6 +2,8 @@
 
 GitHub issue feedback for gitbook.
 
+[![gif](https://media.giphy.com/media/3o7btYpgJvLlhkJMfC/giphy.gif)](http://www.giphy.com/gifs/3o7btYpgJvLlhkJMfC)
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
