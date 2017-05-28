@@ -55,7 +55,7 @@ window.require(["gitbook"], function(gitbook) {
             var pathname = path.join(gitbook.state.config.root, gitbook.state.filepath);
             var apiURL = getAPIURL(config, pathname);
             var resourceURL = getResourceURL(config, pathname, "master");
-            var editURL = getEditURL(config, gitbook.state.filepath, "master");
+            var editURL = getEditURL(config, pathname, "master");
             var chapterTitle = gitbook.state.chapterTitle;
             getContentAsync(apiURL).then(function(markdown) {
                 var bug = new BugReporter(getIssueURL(config));
