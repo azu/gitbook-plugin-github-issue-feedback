@@ -9,14 +9,20 @@ function quoteText(text) {
     }).join("\n");
 }
 
-function getContentAsync(apiURL) {
+function getContentAsync(contentURL) {
+  if (/^https:\/\/api.github.com\/repos/.test(contentURL)) {
     // https://github.com/jser/jser.info/edit/gh-pages/data/2015/08/index.json
     // => https://api.github.com/repos/jser/jser.info/contents/data/2015/08/index.json
-    return fetch(apiURL).then(function(response) {
+    return fetch(contentURL).then(function(response) {
         return response.json();
     }).then(function(response) {
         return decodeURIComponent(escape(atob(response.content)));
     });
+  } else {
+    return fetch(contentURL).then(function(response) {
+        return response.text();
+    });
+  }
 }
 
 function getResourceURL(config, filePath, branch) {
@@ -29,11 +35,19 @@ function getResourceURL(config, filePath, branch) {
 function getEditURL(config, filePath, branch) {
     return urlJoin(`https://github.com/`, config.repo, `edit`, branch, filePath);
 }
-function getAPIURL(config, filePath) {
-    if (config["githubAPIBaseURL"]) {
-        return urlJoin(config["githubAPIBaseURL"], filePath);
+function getContentURL(config, filePath) {
+    if (config.private) {
+        return urlJoin(
+            location.origin,
+            "gitbook/gitbook-plugin-github-issue-feedback/contents",
+            filePath
+        );
+    } else {
+        if (config["githubAPIBaseURL"]) {
+            return urlJoin(config["githubAPIBaseURL"], filePath);
+        }
+        return urlJoin(`https://api.github.com/repos/`, config.repo, `contents`, filePath);
     }
-    return urlJoin(`https://api.github.com/repos/`, config.repo, `contents`, filePath);
 }
 
 function getIssueURL(config) {
@@ -53,14 +67,14 @@ window.require(["gitbook"], function(gitbook) {
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
         reportElement.addEventListener(clickEvent, function(event) {
             var pathname = path.join(gitbook.state.config.root || "./", gitbook.state.filepath);
-            var apiURL = getAPIURL(config, pathname);
+            var contentURL = getContentURL(config, pathname);
             var resourceURL = getResourceURL(config, pathname, "master");
             var editURL = getEditURL(config, pathname, "master");
             var chapterTitle = gitbook.state.chapterTitle;
             var bug = new BugReporter(getIssueURL(config));
             var selectedText = bug.getSelectedText().trim();
             bug.setTitle(chapterTitle);
-            getContentAsync(apiURL).then(function(markdown) {
+            getContentAsync(contentURL).then(function(markdown) {
                 let body = 'URL : ' + resourceURL + "\n\n";
                 if (selectedText && selectedText.length > 0) {
                     var matches = findAllPositions({

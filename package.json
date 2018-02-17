@@ -38,6 +38,11 @@
         "type": "string",
         "description": "GitHub API Base url e.g.) https://api.github.com/repos/asciidwango/js-primer/blob/master/",
         "required": false
+      },
+      "private": {
+        "type": "boolean",
+        "description": "Is repo private or not?",
+        "required": false
       }
     }
   },
@@ -76,6 +81,7 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
+    "fs-extra": "^5.0.0",
     "position-map-text-to-markdown": "^1.0.1",
     "url-join": "^2.0.2"
   }
