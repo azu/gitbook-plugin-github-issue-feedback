@@ -3,7 +3,6 @@
 
 const path = require("path")
 const fse = require("fs-extra")
-const pkg = require("./package.json")
 
 module.exports = {
     website: {
@@ -24,7 +23,7 @@ module.exports = {
             // copy contents for private repository
             if (isPrivateRepo) {
                 const source = this.config.get("root", "./")
-                const target = path.join("./_book/gitbook/", pkg.name, "contents", source)
+                const target = path.join("./_book/gitbook/gitbook-plugin-github-issue-feedback/contents", source)
                 fse.copy(source, target)
             }
         }
