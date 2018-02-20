@@ -11,7 +11,7 @@
     "assets/"
   ],
   "name": "gitbook-plugin-github-issue-feedback",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "GitHub issue feedback for gitbook.",
   "main": "index.js",
   "engines": {
