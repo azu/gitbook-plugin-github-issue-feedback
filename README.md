@@ -33,6 +33,26 @@ You should set `repo` in your `book.json`.
 }
 ```
 
+- `private`: `boolean` (optional, default is `false`)
+
+For private repositories, set this flag.
+
+```json
+{
+    "gitbook": ">=3.0.0",
+    "title": "Example",
+    "plugins": [
+        "github-issue-feedback"
+    ],
+    "pluginsConfig": {
+        "github-issue-feedback": {
+            "repo": "your/private_repo",
+            "private": true
+        }
+    }
+}
+```
+
 ## Changelog
 
 See [Releases page](https://github.com/azu/gitbook-plugin-github-issue-feedback/releases).
