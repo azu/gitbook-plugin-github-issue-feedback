@@ -24,7 +24,7 @@ module.exports = {
             if (isPrivateRepo) {
                 const source = this.config.get("root", "./")
                 const target = path.join("./_book/gitbook/gitbook-plugin-github-issue-feedback/contents", source)
-                fse.copy(source, target)
+                fse.copySync(source, target)
             }
         }
     }
