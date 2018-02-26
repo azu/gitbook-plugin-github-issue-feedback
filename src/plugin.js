@@ -19,7 +19,7 @@ function getContentAsync(contentURL) {
         return decodeURIComponent(escape(atob(response.content)));
     });
   } else {
-    return fetch(contentURL).then(function(response) {
+    return fetch(contentURL, { credentials: "same-origin" }).then(function(response) {
         return response.text();
     });
   }
