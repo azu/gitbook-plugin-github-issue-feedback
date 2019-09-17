@@ -39,7 +39,7 @@ function getContentURL(config, filePath) {
     if (config.private) {
         return urlJoin(
             location.origin,
-            config.repo.split('/')[1],
+            /\.github\.io$/.test(config.repo) ? '' : config.repo.split('/')[1],
             "gitbook/gitbook-plugin-github-issue-feedback/contents",
             filePath
         );
