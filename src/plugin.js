@@ -82,7 +82,6 @@ window.require(["gitbook"], function(gitbook) {
                         text: selectedText,
                         markdown: markdown
                     });
-                    console.log(matches);
                     matches.forEach(function(match) {
                         var editLink = `[:memo:](${editURL}#L${match.loc.start.line} "Edit")`;
                         body += quoteText(match.markdown + "\n" +
