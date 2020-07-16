@@ -67,7 +67,6 @@ Set button label if you want to use other than default.
     "pluginsConfig": {
         "github-issue-feedback": {
             "repo": "your/private_repo",
-            "private": true,
             "label": "Report Issue on GitHub"
         }
     }
