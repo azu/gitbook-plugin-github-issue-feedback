@@ -24,6 +24,11 @@
         "description": "GitHub repo path. e.g.) asciidwango/js-primer ",
         "required": true
       },
+      "label": {
+        "type": "string",
+        "description": "Label text for report button",
+        "required": false
+      },
       "newIssueURL": {
         "type": "string",
         "description": "GitHub New Issue url e.g.) https://github.com/azu/promises-book/issues/new",
