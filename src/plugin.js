@@ -62,7 +62,7 @@ window.require(["gitbook"], function(gitbook) {
     gitbook.events.bind("start", function(e, pluginConfig) {
         var config = pluginConfig["github-issue-feedback"];
         var reportElement = document.createElement("button");
-        reportElement.textContent = "Bug Report";
+        reportElement.textContent = config["label"] || "Bug Report";
         reportElement.className = "gitbook-plugin-github-issue-feedback";
         reportElement.setAttribute("style", "position:fixed; right:0;bottom:0;");
         var clickEvent = ("ontouchstart" in window) ? "touchend" : "click";
