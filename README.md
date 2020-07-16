@@ -53,6 +53,27 @@ For private repositories, set this flag.
 }
 ```
 
+- `label`: button label (optional, default is `Bug Report`)
+
+Set button label if you want to use other than default.
+
+```json
+{
+    "gitbook": ">=3.0.0",
+    "title": "Example",
+    "plugins": [
+        "github-issue-feedback"
+    ],
+    "pluginsConfig": {
+        "github-issue-feedback": {
+            "repo": "your/private_repo",
+            "private": true,
+            "label": "Report Issue on GitHub"
+        }
+    }
+}
+```
+
 ## Changelog
 
 See [Releases page](https://github.com/azu/gitbook-plugin-github-issue-feedback/releases).
